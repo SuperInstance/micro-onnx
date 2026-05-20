@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "micro-onnx"
+version = "0.1.0"
+description = "ONNX export + benchmark pipeline for micro-models. 186x speedup over PyTorch CPU."
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.10"
+authors = [{name = "SuperInstance"}]
+keywords = ["onnx", "pytorch", "inference", "optimization", "micro-models"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Programming Language :: Python :: 3",
+]
+dependencies = ["numpy"]
+
+[project.optional-dependencies]
+export = ["torch", "onnx"]
+runtime = ["onnxruntime"]
+all = ["torch", "onnx", "onnxruntime"]
+dev = ["pytest", "torch", "onnx", "onnxruntime"]
+
+[tool.setuptools.packages.find]
+include = ["micro_onnx*"]
