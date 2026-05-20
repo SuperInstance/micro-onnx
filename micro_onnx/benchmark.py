@@ -128,7 +128,7 @@ def benchmark_model(
         pytorch_mean_ms = (pytorch_total / n_runs) * 1000
         pytorch_qps = n_runs / pytorch_total
 
-    speedup = pytorch_qps / onnx_qps if onnx_qps > 0 and pytorch_qps > 0 else 0.0
+    speedup = onnx_qps / pytorch_qps if pytorch_qps > 0 else 0.0
 
     result = BenchmarkResult(
         pytorch_qps=round(pytorch_qps, 2),

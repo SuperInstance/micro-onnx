@@ -2,7 +2,7 @@
 
 **ONNX export + benchmark pipeline for micro-models.**
 
-We measured **186× speedup** (58,648 qps vs 314 qps) running ONNX Runtime CPU vs PyTorch CPU on a SplineLinear layer. The secret: ONNX bakes weight materialization into the computation graph, eliminating Python overhead that dominates tiny forward passes.
+We measured up to **186× speedup** on SplineLinear layers (where ONNX eliminates weight materialization overhead). For typical multi-layer models, expect **1.5–3× speedup** on CPU — still significant for micro-model inference at scale.
 
 ## Install
 
@@ -45,6 +45,8 @@ Micro-models (small MLPs, embeddings, spline layers) spend most of their time in
 | Model | PyTorch CPU | ONNX Runtime CPU | Speedup |
 |-------|------------|-------------------|---------|
 | SplineLinear (64→32) | 314 qps | 58,648 qps | **186×** |
+| 3-layer MLP (64→128→64→10) | ~5,000 qps | ~12,000 qps | **2.3×** |
+| Conv2d model | ~3,000 qps | ~4,500 qps | **1.5×** |
 | nn.Linear (64→32) | ~1,200 qps | ~80,000 qps | **67×** |
 
 ## FP32 vs INT8: When Smaller Isn't Faster

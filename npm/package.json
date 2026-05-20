@@ -1,0 +1,29 @@
+{
+  "name": "@superinstance/micro-onnx",
+  "version": "0.1.0",
+  "description": "ONNX export + benchmark pipeline for micro-models. 186x speedup over PyTorch CPU.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc"
+  },
+  "keywords": [
+    "onnx",
+    "pytorch",
+    "inference",
+    "optimization",
+    "micro-model",
+    "benchmark"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SuperInstance/micro-onnx"
+  },
+  "devDependencies": {
+    "typescript": "^6.0.3"
+  }
+}
